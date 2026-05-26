@@ -61,30 +61,50 @@ const faqData = [
   }
 ];
 
-const FAQSidebar: React.FC = () => {
-  const [openItem, setOpenItem] = useState<string | null>("0-0");
+const FAQSection: React.FC = () => {
+  const [activeTab, setActiveTab] = useState(0);
+  const [openItem, setOpenItem] = useState<number | null>(0);
 
-  const toggleAccordion = (categoryId: number, itemId: number) => {
-    const id = `${categoryId}-${itemId}`;
-    setOpenItem(openItem === id ? null : id);
+  const toggleAccordion = (index: number) => {
+    setOpenItem(openItem === index ? null : index);
   };
 
   return (
-    <div className="max-w-4xl mx-auto w-full px-4">
-      {faqData.map((category, catIndex) => (
-        <div key={catIndex} className="mb-16 animate-fade-in-up" style={{ animationDelay: `${catIndex * 100}ms` }}>
-          <h2 className="text-3xl font-extrabold text-[#282930] uppercase tracking-widest mb-8 border-b-2 border-[#42C5FF] pb-2 inline-block">
-            {category.category}
-          </h2>
-          
+    <section id="faq-section" className="bg-white py-24 px-4 border-b border-gray-200">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-4xl font-extrabold text-[#282930] uppercase tracking-widest mb-12 text-center">
+          Knowledge Base
+        </h2>
+        
+        {/* Top Tabs Navigation */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12 border-b border-gray-200 pb-4">
+          {faqData.map((cat, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                setActiveTab(index);
+                setOpenItem(0); // Reset accordion when changing tabs
+              }}
+              className={`px-6 py-3 font-bold uppercase tracking-widest text-sm transition-colors border-b-2 ${
+                activeTab === index 
+                  ? 'border-[#42C5FF] text-[#282930]' 
+                  : 'border-transparent text-gray-400 hover:text-[#282930]'
+              }`}
+            >
+              {cat.category}
+            </button>
+          ))}
+        </div>
+
+        {/* Tab Content (Accordion) */}
+        <div className="animate-fade-in-up" key={activeTab}>
           <div className="flex flex-col border-t border-gray-300">
-            {category.items.map((item, itemIndex) => {
-              const id = `${catIndex}-${itemIndex}`;
-              const isOpen = openItem === id;
+            {faqData[activeTab].items.map((item, itemIndex) => {
+              const isOpen = openItem === itemIndex;
               return (
                 <div key={itemIndex} className="border-b border-gray-300 overflow-hidden bg-white">
                   <button 
-                    onClick={() => toggleAccordion(catIndex, itemIndex)}
+                    onClick={() => toggleAccordion(itemIndex)}
                     className="w-full text-left py-6 px-4 flex justify-between items-center hover:bg-gray-50 transition-colors focus:outline-none"
                   >
                     <span className={`font-bold text-lg md:text-xl pr-8 transition-colors ${isOpen ? 'text-[#42C5FF]' : 'text-[#282930]'}`}>
@@ -106,9 +126,9 @@ const FAQSidebar: React.FC = () => {
             })}
           </div>
         </div>
-      ))}
-    </div>
+      </div>
+    </section>
   );
 };
 
-export default FAQSidebar;
+export default FAQSection;

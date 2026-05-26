@@ -23,6 +23,14 @@ const Hero: React.FC = () => {
             Search
           </button>
         </div>
+
+        <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm">
+          <span className="text-gray-400 font-medium mr-2 self-center uppercase tracking-widest text-xs">Popular Topics:</span>
+          <button className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">IPC-A-610 Standards</button>
+          <button className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">LoRaWAN Modules</button>
+          <button className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">Supply Chain Lead Times</button>
+          <button className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">RMA Procedure</button>
+        </div>
       </div>
     </section>
   );

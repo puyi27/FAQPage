@@ -1,7 +1,9 @@
 import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import FAQSidebar from './components/FAQSidebar';
+import SupportOptions from './components/SupportOptions';
+import FAQSection from './components/FAQSection';
+import ResourceCenter from './components/ResourceCenter';
 import ContactCTA from './components/ContactCTA';
 
 const App: React.FC = () => {
@@ -10,11 +12,9 @@ const App: React.FC = () => {
       <Header />
       <main className="flex-1">
         <Hero />
-        
-        <section className="py-24 px-4">
-          <FAQSidebar />
-        </section>
-
+        <SupportOptions />
+        <ResourceCenter />
+        <FAQSection />
         <ContactCTA />
       </main>
       
