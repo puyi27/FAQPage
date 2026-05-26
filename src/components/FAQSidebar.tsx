@@ -4,32 +4,32 @@ import CloseIcon from '@mui/icons-material/Close';
 
 const faqData = [
   {
-    category: "Prototipado y PCBA",
+    category: "Prototyping & PCBA",
     items: [
       {
-        q: "¿Cuáles son los estándares de calidad aplicados en el ensamble PCBA para automoción?",
-        a: "Aplicamos estrictamente la norma IATF 16949 y los estándares IPC-A-610 Clase 2 y 3. Nuestro proceso incluye inspección óptica automática (AOI) 3D, inspección por rayos X (AXI) para componentes BGA, y pruebas ICT/FCT personalizadas según las especificaciones del diseño."
+        q: "What quality standards are applied in PCBA assembly for automotive?",
+        a: "We strictly apply the IATF 16949 norm and IPC-A-610 Class 2 and 3 standards. Our process includes 3D Automated Optical Inspection (AOI), Automated X-Ray Inspection (AXI) for BGA components, and custom ICT/FCT testing based on design specifications."
       },
       {
-        q: "¿Qué tiempos de entrega (lead times) manejan para prototipos rápidos de PCBA?",
-        a: "Para la fase NPI (New Product Introduction), ofrecemos el servicio Fast Track. Si los componentes críticos están disponibles o son suministrados por el cliente (Consigned), el ensamble de prototipos puede completarse en un rango de 5 a 10 días hábiles una vez superada la revisión DFM (Design for Manufacturing)."
+        q: "What lead times do you offer for rapid PCBA prototypes?",
+        a: "For the NPI (New Product Introduction) phase, we offer the Fast Track service. If critical components are available or supplied by the customer (Consigned), prototype assembly can be completed within 5 to 10 business days after clearing the DFM (Design for Manufacturing) review."
       },
       {
-        q: "¿Qué capacidades de co-design ofrece el equipo de I+D?",
-        a: "Nuestro equipo interviene desde la concepción arquitectónica. Realizamos análisis de viabilidad térmica y de señal, optimización BOM para mitigación de obsolescencia, y rediseño enfocado en DFX (Design for Excellence: Manufacturing, Assembly, Test)."
+        q: "What co-design capabilities does the R&D team offer?",
+        a: "Our team intervenes from the architectural conception. We perform thermal and signal feasibility analysis, BOM optimization for obsolescence mitigation, and redesign focused on DFX (Design for Excellence: Manufacturing, Assembly, Test)."
       }
     ]
   },
   {
-    category: "Soluciones IoT y Cloud",
+    category: "IoT & Cloud Solutions",
     items: [
       {
-        q: "¿Qué protocolos de comunicación inalámbrica soportan sus módulos embebidos?",
-        a: "Desarrollamos soluciones agnósticas integrando BLE 5.x, Wi-Fi 6, LoRaWAN para largo alcance y bajo consumo, NB-IoT/LTE-M para conectividad celular, y Matter para domótica, asegurando escalabilidad en infraestructuras Edge y Cloud."
+        q: "Which wireless communication protocols do your embedded modules support?",
+        a: "We develop agnostic solutions integrating BLE 5.x, Wi-Fi 6, LoRaWAN for long-range and low power, NB-IoT/LTE-M for cellular connectivity, and Matter for home automation, ensuring scalability in Edge and Cloud infrastructures."
       },
       {
-        q: "¿Cómo garantizan la ciberseguridad en el ecosistema de hardware a nube?",
-        a: "Implementamos elementos de seguridad por hardware (Secure Elements / TPM), procesos de Secure Boot, cifrado TLS 1.3 de extremo a extremo, y gestión de certificados X.509 integrados en flujos de aprovisionamiento Zero-Touch con plataformas como AWS IoT o Azure IoT Hub."
+        q: "How do you guarantee cybersecurity in the hardware-to-cloud ecosystem?",
+        a: "We implement hardware security elements (Secure Elements / TPM), Secure Boot processes, end-to-end TLS 1.3 encryption, and X.509 certificate management integrated into Zero-Touch provisioning workflows with platforms like AWS IoT or Azure IoT Hub."
       }
     ]
   },
@@ -37,25 +37,25 @@ const faqData = [
     category: "FAE Technology HUB",
     items: [
       {
-        q: "¿Qué infraestructura de pruebas ofrece el laboratorio en Kilometro Rosso?",
-        a: "El HUB tecnológico dispone de cámaras anecoicas para precertificación EMC/EMI, cámaras climáticas para pruebas de estrés térmico (-40°C a +150°C), y simuladores de vibración para validar la fiabilidad de los diseños bajo normativas industriales e IEC."
+        q: "What testing infrastructure does the laboratory at Kilometro Rosso offer?",
+        a: "The technological HUB features anechoic chambers for EMC/EMI pre-certification, climatic chambers for thermal stress testing (-40°C to +150°C), and vibration simulators to validate design reliability under industrial and IEC standards."
       },
       {
-        q: "¿Es posible integrar a nuestros ingenieros en las instalaciones del HUB?",
-        a: "Sí, operamos bajo un modelo de innovación abierta. Proveemos laboratorios satélite e islas de desarrollo donde equipos conjuntos (cliente y FAE) pueden colaborar in situ para la maduración acelerada del producto (Proof of Concept a MVP)."
+        q: "Is it possible to integrate our engineers into the HUB facilities?",
+        a: "Yes, we operate under an open innovation model. We provide satellite laboratories and development islands where joint teams (client and FAE) can collaborate in situ for accelerated product maturation (Proof of Concept to MVP)."
       }
     ]
   },
   {
-    category: "Cadena de Suministro",
+    category: "Supply Chain",
     items: [
       {
-        q: "¿Cómo gestionan la escasez de componentes electrónicos a nivel global?",
-        a: "Contamos con un sistema de inteligencia de cadena de suministro que monitorea el ciclo de vida de los componentes (Silicon Expert). Aplicamos estrategias de compras prospectivas, calificación de fuentes alternativas (second-source), y buffer stocks estratégicos."
+        q: "How do you manage the global shortage of electronic components?",
+        a: "We have a supply chain intelligence system that monitors component lifecycles (Silicon Expert). We apply prospective purchasing strategies, second-source qualification, and strategic buffer stocks."
       },
       {
-        q: "¿Qué niveles de trazabilidad ofrecen en la manufactura en masa?",
-        a: "Nuestro sistema MES (Manufacturing Execution System) garantiza trazabilidad unitaria de Nivel 4. Registramos lote, fecha y proveedor de cada componente montado en cada número de serie de PCBA, esencial para los sectores aeroespacial y médico."
+        q: "What levels of traceability do you offer in mass manufacturing?",
+        a: "Our MES (Manufacturing Execution System) guarantees Level 4 unit traceability. We record the batch, date, and supplier of every component mounted on each PCBA serial number, essential for the aerospace and medical sectors."
       }
     ]
   }
@@ -72,7 +72,7 @@ const FAQSidebar: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-start w-full">
       <div className="w-full md:w-1/4 bg-white border border-gray-200 shadow-sm p-4 sticky top-24">
-        <h3 className="font-bold text-gray-900 uppercase tracking-widest text-sm mb-6 border-b border-gray-200 pb-3">Categorías Técnicas</h3>
+        <h3 className="font-bold text-gray-900 uppercase tracking-widest text-sm mb-6 border-b border-gray-200 pb-3">Technical Categories</h3>
         <ul className="flex flex-col gap-2">
           {faqData.map((category, index) => (
             <li key={index}>
