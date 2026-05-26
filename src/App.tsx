@@ -14,10 +14,10 @@ const App: React.FC = () => {
       <Header />
       <main className="flex-1">
         <Hero searchTerm={searchTerm} onSearch={setSearchTerm} />
-        <SupportOptions />
+        {!searchTerm && <SupportOptions />}
         <ResourceCenter searchTerm={searchTerm} />
         <FAQSection searchTerm={searchTerm} />
-        <ContactCTA />
+        {!searchTerm && <ContactCTA />}
       </main>
       
       <footer className="footer py-20 px-10 bg-[#282930] text-white">

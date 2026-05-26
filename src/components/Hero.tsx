@@ -7,6 +7,19 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ searchTerm, onSearch }) => {
+  const handleTopicClick = (term: string) => {
+    onSearch(term);
+    setTimeout(() => {
+      window.scrollTo({ top: 400, behavior: 'smooth' });
+    }, 100);
+  };
+
+  const handleSearchClick = () => {
+    if (searchTerm) {
+      window.scrollTo({ top: 400, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative pt-40 pb-32 px-4 text-center bg-[#282930] border-b border-[#282930]">
       <div className="max-w-4xl mx-auto relative z-10 animate-fade-in-up">
@@ -23,20 +36,24 @@ const Hero: React.FC<HeroProps> = ({ searchTerm, onSearch }) => {
             type="text" 
             value={searchTerm}
             onChange={(e) => onSearch(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter') handleSearchClick(); }}
             placeholder="Search technical articles, PCBA guides, or documentation..." 
             className="bg-transparent border-none outline-none text-[#282930] flex-1 py-4 px-2 placeholder-gray-400 text-lg font-medium"
           />
-          <button className="bg-[#282930] text-white rounded-none px-12 py-4 font-bold uppercase tracking-widest hover:bg-[#1d1d23] transition-colors">
+          <button 
+            onClick={handleSearchClick}
+            className="bg-[#282930] text-white rounded-none px-12 py-4 font-bold uppercase tracking-widest hover:bg-[#1d1d23] transition-colors"
+          >
             Search
           </button>
         </div>
 
         <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm">
           <span className="text-gray-400 font-medium mr-2 self-center uppercase tracking-widest text-xs">Popular Topics:</span>
-          <button onClick={() => onSearch('IPC-A-610')} className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">IPC-A-610 Standards</button>
-          <button onClick={() => onSearch('LoRaWAN')} className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">LoRaWAN Modules</button>
-          <button onClick={() => onSearch('Supply Chain')} className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">Supply Chain Lead Times</button>
-          <button onClick={() => onSearch('RMA')} className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">RMA Procedure</button>
+          <button onClick={() => handleTopicClick('IPC-A-610')} className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">IPC-A-610 Standards</button>
+          <button onClick={() => handleTopicClick('LoRaWAN')} className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">LoRaWAN Modules</button>
+          <button onClick={() => handleTopicClick('Supply Chain')} className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">Supply Chain Lead Times</button>
+          <button onClick={() => handleTopicClick('RMA')} className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">RMA Procedure</button>
         </div>
       </div>
     </section>
