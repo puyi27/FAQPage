@@ -5,6 +5,7 @@ import SupportOptions from './components/SupportOptions';
 import FAQSection from './components/FAQSection';
 import ResourceCenter from './components/ResourceCenter';
 import ContactCTA from './components/ContactCTA';
+import ChatbotWidget from './components/ChatbotWidget';
 
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -50,6 +51,8 @@ const App: React.FC = () => {
           </div>
         </div>
       </footer>
+
+      <ChatbotWidget />
     </div>
   );
 }
