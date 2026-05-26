@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased min-h-screen bg-white text-[#282930];
+    font-family: 'Raleway', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight text-[#1a1e21];
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white border border-[#e9ecef];
+  }
+}
