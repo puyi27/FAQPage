@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import SupportOptions from './components/SupportOptions';
@@ -7,14 +7,16 @@ import ResourceCenter from './components/ResourceCenter';
 import ContactCTA from './components/ContactCTA';
 
 const App: React.FC = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Header />
       <main className="flex-1">
-        <Hero />
+        <Hero searchTerm={searchTerm} onSearch={setSearchTerm} />
         <SupportOptions />
-        <ResourceCenter />
-        <FAQSection />
+        <ResourceCenter searchTerm={searchTerm} />
+        <FAQSection searchTerm={searchTerm} />
         <ContactCTA />
       </main>
       

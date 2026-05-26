@@ -1,7 +1,12 @@
 import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  searchTerm: string;
+  onSearch: (term: string) => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ searchTerm, onSearch }) => {
   return (
     <section className="relative pt-40 pb-32 px-4 text-center bg-[#282930] border-b border-[#282930]">
       <div className="max-w-4xl mx-auto relative z-10 animate-fade-in-up">
@@ -16,6 +21,8 @@ const Hero: React.FC = () => {
           <SearchIcon className="text-gray-400 ml-4 mr-3" fontSize="large" />
           <input 
             type="text" 
+            value={searchTerm}
+            onChange={(e) => onSearch(e.target.value)}
             placeholder="Search technical articles, PCBA guides, or documentation..." 
             className="bg-transparent border-none outline-none text-[#282930] flex-1 py-4 px-2 placeholder-gray-400 text-lg font-medium"
           />
@@ -26,10 +33,10 @@ const Hero: React.FC = () => {
 
         <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm">
           <span className="text-gray-400 font-medium mr-2 self-center uppercase tracking-widest text-xs">Popular Topics:</span>
-          <button className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">IPC-A-610 Standards</button>
-          <button className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">LoRaWAN Modules</button>
-          <button className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">Supply Chain Lead Times</button>
-          <button className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">RMA Procedure</button>
+          <button onClick={() => onSearch('IPC-A-610')} className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">IPC-A-610 Standards</button>
+          <button onClick={() => onSearch('LoRaWAN')} className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">LoRaWAN Modules</button>
+          <button onClick={() => onSearch('Supply Chain')} className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">Supply Chain Lead Times</button>
+          <button onClick={() => onSearch('RMA')} className="bg-[#36373E] hover:bg-[#42C5FF] text-white px-4 py-2 rounded-full transition-colors border border-transparent hover:border-[#42C5FF]">RMA Procedure</button>
         </div>
       </div>
     </section>

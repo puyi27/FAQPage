@@ -61,69 +61,117 @@ const faqData = [
   }
 ];
 
-const FAQSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState(0);
-  const [openItem, setOpenItem] = useState<number | null>(0);
+interface FAQSectionProps {
+  searchTerm: string;
+}
 
-  const toggleAccordion = (index: number) => {
-    setOpenItem(openItem === index ? null : index);
+const FAQSection: React.FC<FAQSectionProps> = ({ searchTerm }) => {
+  const [activeTab, setActiveTab] = useState(0);
+  const [openItem, setOpenItem] = useState<string | number | null>(0);
+
+  const toggleAccordion = (id: string | number) => {
+    setOpenItem(openItem === id ? null : id);
   };
+
+  const isSearching = searchTerm.trim().length > 0;
+  
+  // If searching, flatten the FAQ data
+  const flatFAQs = faqData.flatMap(cat => 
+    cat.items.map((item, idx) => ({ ...item, category: cat.category, originalIndex: `${cat.category}-${idx}` }))
+  );
+  
+  const filteredFAQs = flatFAQs.filter(item => 
+    item.q.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    item.a.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  if (isSearching && filteredFAQs.length === 0) return null;
 
   return (
     <section id="faq-section" className="bg-white py-24 px-4 border-b border-gray-200">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-4xl font-extrabold text-[#282930] uppercase tracking-widest mb-12 text-center">
-          Knowledge Base
+          {isSearching ? 'Search Results in Knowledge Base' : 'Knowledge Base'}
         </h2>
         
-        {/* Top Tabs Navigation */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12 border-b border-gray-200 pb-4">
-          {faqData.map((cat, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                setActiveTab(index);
-                setOpenItem(0); // Reset accordion when changing tabs
-              }}
-              className={`px-6 py-3 font-bold uppercase tracking-widest text-sm transition-colors border-b-2 ${
-                activeTab === index 
-                  ? 'border-[#42C5FF] text-[#282930]' 
-                  : 'border-transparent text-gray-400 hover:text-[#282930]'
-              }`}
-            >
-              {cat.category}
-            </button>
-          ))}
-        </div>
+        {!isSearching && (
+          <div className="flex flex-wrap justify-center gap-2 mb-12 border-b border-gray-200 pb-4">
+            {faqData.map((cat, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setActiveTab(index);
+                  setOpenItem(0); // Reset accordion when changing tabs
+                }}
+                className={`px-6 py-3 font-bold uppercase tracking-widest text-sm transition-colors border-b-2 ${
+                  activeTab === index 
+                    ? 'border-[#42C5FF] text-[#282930]' 
+                    : 'border-transparent text-gray-400 hover:text-[#282930]'
+                }`}
+              >
+                {cat.category}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Tab Content (Accordion) */}
-        <div className="animate-fade-in-up" key={activeTab}>
+        <div className="animate-fade-in-up" key={isSearching ? 'search' : activeTab}>
           <div className="flex flex-col border-t border-gray-300">
-            {faqData[activeTab].items.map((item, itemIndex) => {
-              const isOpen = openItem === itemIndex;
-              return (
-                <div key={itemIndex} className="border-b border-gray-300 overflow-hidden bg-white">
-                  <button 
-                    onClick={() => toggleAccordion(itemIndex)}
-                    className="w-full text-left py-6 px-4 flex justify-between items-center hover:bg-gray-50 transition-colors focus:outline-none"
-                  >
-                    <span className={`font-bold text-lg md:text-xl pr-8 transition-colors ${isOpen ? 'text-[#42C5FF]' : 'text-[#282930]'}`}>
-                      {item.q}
-                    </span>
-                    <div className={`transform transition-transform duration-300 flex-shrink-0 text-[#282930] ${isOpen ? 'rotate-90 text-[#42C5FF]' : ''}`}>
-                      {isOpen ? <CloseIcon fontSize="large" /> : <AddIcon fontSize="large" />}
-                    </div>
-                  </button>
-                  <div 
-                    className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
-                  >
-                    <div className="px-4 pb-8 text-gray-600 text-lg leading-relaxed pt-2">
-                      {item.a}
+            {isSearching ? (
+              // SEARCH VIEW
+              filteredFAQs.map((item) => {
+                const isOpen = openItem === item.originalIndex;
+                return (
+                  <div key={item.originalIndex} className="border-b border-gray-300 overflow-hidden bg-white">
+                    <button 
+                      onClick={() => toggleAccordion(item.originalIndex)}
+                      className="w-full text-left py-6 px-4 flex justify-between items-center hover:bg-gray-50 transition-colors focus:outline-none"
+                    >
+                      <div>
+                        <span className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{item.category}</span>
+                        <span className={`font-bold text-lg md:text-xl pr-8 transition-colors ${isOpen ? 'text-[#42C5FF]' : 'text-[#282930]'}`}>
+                          {item.q}
+                        </span>
+                      </div>
+                      <div className={`transform transition-transform duration-300 flex-shrink-0 text-[#282930] ${isOpen ? 'rotate-90 text-[#42C5FF]' : ''}`}>
+                        {isOpen ? <CloseIcon fontSize="large" /> : <AddIcon fontSize="large" />}
+                      </div>
+                    </button>
+                    <div className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                      <div className="px-4 pb-8 text-gray-600 text-lg leading-relaxed pt-2">
+                        {item.a}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })
+            ) : (
+              // TABS VIEW
+              faqData[activeTab].items.map((item, itemIndex) => {
+                const isOpen = openItem === itemIndex;
+                return (
+                  <div key={itemIndex} className="border-b border-gray-300 overflow-hidden bg-white">
+                    <button 
+                      onClick={() => toggleAccordion(itemIndex)}
+                      className="w-full text-left py-6 px-4 flex justify-between items-center hover:bg-gray-50 transition-colors focus:outline-none"
+                    >
+                      <span className={`font-bold text-lg md:text-xl pr-8 transition-colors ${isOpen ? 'text-[#42C5FF]' : 'text-[#282930]'}`}>
+                        {item.q}
+                      </span>
+                      <div className={`transform transition-transform duration-300 flex-shrink-0 text-[#282930] ${isOpen ? 'rotate-90 text-[#42C5FF]' : ''}`}>
+                        {isOpen ? <CloseIcon fontSize="large" /> : <AddIcon fontSize="large" />}
+                      </div>
+                    </button>
+                    <div className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                      <div className="px-4 pb-8 text-gray-600 text-lg leading-relaxed pt-2">
+                        {item.a}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            )}
           </div>
         </div>
       </div>
