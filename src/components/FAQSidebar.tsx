@@ -62,66 +62,51 @@ const faqData = [
 ];
 
 const FAQSidebar: React.FC = () => {
-  const [activeTab, setActiveTab] = useState(0);
-  const [openItem, setOpenItem] = useState<number | null>(0);
+  const [openItem, setOpenItem] = useState<string | null>("0-0");
 
-  const toggleAccordion = (index: number) => {
-    setOpenItem(openItem === index ? null : index);
+  const toggleAccordion = (categoryId: number, itemId: number) => {
+    const id = `${categoryId}-${itemId}`;
+    setOpenItem(openItem === id ? null : id);
   };
 
   return (
-    <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-start w-full">
-      <div className="w-full md:w-1/4 bg-white border border-gray-200 shadow-sm p-4 sticky top-24">
-        <h3 className="font-bold text-gray-900 uppercase tracking-widest text-sm mb-6 border-b border-gray-200 pb-3">Technical Categories</h3>
-        <ul className="flex flex-col gap-2">
-          {faqData.map((category, index) => (
-            <li key={index}>
-              <button
-                onClick={() => { setActiveTab(index); setOpenItem(0); }}
-                className={`w-full text-left px-4 py-3 font-semibold text-sm transition-colors rounded-none border-l-2 ${
-                  activeTab === index 
-                    ? 'border-[#0d6efd] bg-gray-50 text-[#0d6efd]' 
-                    : 'border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                }`}
-              >
-                {category.category}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="w-full md:w-3/4">
-        <h2 className="text-3xl font-extrabold text-gray-900 mb-8 pb-4 border-b border-gray-200">
-          {faqData[activeTab].category}
-        </h2>
-        
-        <div className="flex flex-col gap-4">
-          {faqData[activeTab].items.map((item, index) => {
-            const isOpen = openItem === index;
-            return (
-              <div key={index} className="bg-white border border-gray-200 shadow-sm rounded-none overflow-hidden transition-all duration-300">
-                <button 
-                  onClick={() => toggleAccordion(index)}
-                  className="w-full text-left px-6 py-5 flex justify-between items-center bg-white hover:bg-gray-50 transition-colors focus:outline-none"
-                >
-                  <span className="font-bold text-lg text-gray-900 pr-8">{item.q}</span>
-                  <div className={`transform transition-transform duration-300 flex-shrink-0 text-[#0d6efd] ${isOpen ? 'rotate-90 text-gray-900' : ''}`}>
-                    {isOpen ? <CloseIcon /> : <AddIcon />}
-                  </div>
-                </button>
-                <div 
-                  className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
-                >
-                  <div className="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
-                    {item.a}
+    <div className="max-w-4xl mx-auto w-full px-4">
+      {faqData.map((category, catIndex) => (
+        <div key={catIndex} className="mb-16 animate-fade-in-up" style={{ animationDelay: `${catIndex * 100}ms` }}>
+          <h2 className="text-3xl font-extrabold text-[#0d6efd] uppercase tracking-widest mb-8 border-b-2 border-[#282930] pb-2 inline-block">
+            {category.category}
+          </h2>
+          
+          <div className="flex flex-col border-t border-gray-300">
+            {category.items.map((item, itemIndex) => {
+              const id = `${catIndex}-${itemIndex}`;
+              const isOpen = openItem === id;
+              return (
+                <div key={itemIndex} className="border-b border-gray-300 overflow-hidden bg-white">
+                  <button 
+                    onClick={() => toggleAccordion(catIndex, itemIndex)}
+                    className="w-full text-left py-6 px-4 flex justify-between items-center hover:bg-gray-50 transition-colors focus:outline-none"
+                  >
+                    <span className={`font-bold text-lg md:text-xl pr-8 transition-colors ${isOpen ? 'text-[#0d6efd]' : 'text-[#282930]'}`}>
+                      {item.q}
+                    </span>
+                    <div className={`transform transition-transform duration-300 flex-shrink-0 text-[#282930] ${isOpen ? 'rotate-90 text-[#0d6efd]' : ''}`}>
+                      {isOpen ? <CloseIcon fontSize="large" /> : <AddIcon fontSize="large" />}
+                    </div>
+                  </button>
+                  <div 
+                    className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+                  >
+                    <div className="px-4 pb-8 text-gray-600 text-lg leading-relaxed pt-2">
+                      {item.a}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };
