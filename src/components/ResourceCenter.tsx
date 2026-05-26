@@ -8,12 +8,22 @@ interface ResourceCenterProps {
 
 const ResourceCenter: React.FC<ResourceCenterProps> = ({ searchTerm }) => {
   const allResources = [
-    { title: "IATF 16949 Certification (Automotive)", type: "PDF", size: "2.4 MB" },
-    { title: "ISO 9001:2015 Quality Management", type: "PDF", size: "1.1 MB" },
-    { title: "Edge IoT Gateway - Technical Datasheet", type: "PDF", size: "4.8 MB" },
-    { title: "LoRaWAN Module Implementation Guide", type: "DOCX", size: "3.2 MB" },
-    { title: "Standard RMA Request Form (2025)", type: "PDF", size: "850 KB" },
-    { title: "AWS IoT Core Zero-Touch Provisioning", type: "ZIP", size: "12.5 MB" }
+    { title: "IATF 16949 Certification (Automotive Quality)", type: "PDF", size: "2.4 MB" },
+    { title: "ISO 9001:2015 Quality Management System", type: "PDF", size: "1.1 MB" },
+    { title: "ISO 14001:2015 Environmental Management", type: "PDF", size: "1.3 MB" },
+    { title: "RoHS 3 Compliance Declaration (2025)", type: "PDF", size: "650 KB" },
+    { title: "REACH SVHC Candidate List Declaration", type: "PDF", size: "820 KB" },
+    { title: "Conflict Minerals Reporting Template (CMRT)", type: "XLSX", size: "3.5 MB" },
+    { title: "Edge IoT Gateway - Hardware Reference Manual", type: "PDF", size: "8.4 MB" },
+    { title: "LoRaWAN Module TR-103 Integration Guide", type: "DOCX", size: "4.2 MB" },
+    { title: "3D CAD Models - Edge Gateway Enclosures", type: "STEP", size: "24.5 MB" },
+    { title: "AWS IoT Core Zero-Touch Provisioning Scripts", type: "ZIP", size: "1.5 MB" },
+    { title: "Azure IoT Hub DPS Postman Collection", type: "JSON", size: "120 KB" },
+    { title: "MQTT Payload Structure Guidelines", type: "MD", size: "45 KB" },
+    { title: "Standard RMA Request Form (Return Authorization)", type: "PDF", size: "850 KB" },
+    { title: "Design for Manufacturing (DFM) Guidelines v4.2", type: "PDF", size: "5.6 MB" },
+    { title: "Conformal Coating Masking Specs Sheet", type: "PDF", size: "1.8 MB" },
+    { title: "Yocto Linux BSP for NXP i.MX8 Series", type: "TAR.GZ", size: "145 MB" }
   ];
 
   const resources = searchTerm 
