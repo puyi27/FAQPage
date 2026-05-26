@@ -1,23 +1,21 @@
 import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import ResourcesGrid from './components/ResourcesGrid';
-import FAQAccordion from './components/FAQAccordion';
-import ContactForm from './components/ContactForm';
+import FAQSidebar from './components/FAQSidebar';
+import ContactCTA from './components/ContactCTA';
 
 const App: React.FC = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen bg-gray-50">
       <Header />
       <main className="flex-1">
         <Hero />
         
-        <section className="py-24 px-4 bg-white">
-          <ResourcesGrid />
-          <div className="w-full h-px bg-gray-200 my-16 max-w-7xl mx-auto"></div>
-          <FAQAccordion />
-          <ContactForm />
+        <section className="py-24 px-4">
+          <FAQSidebar />
         </section>
+
+        <ContactCTA />
       </main>
       
       <footer className="footer py-20 px-10 bg-[#1a1e21] text-white">
