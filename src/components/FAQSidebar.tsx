@@ -73,7 +73,7 @@ const FAQSidebar: React.FC = () => {
     <div className="max-w-4xl mx-auto w-full px-4">
       {faqData.map((category, catIndex) => (
         <div key={catIndex} className="mb-16 animate-fade-in-up" style={{ animationDelay: `${catIndex * 100}ms` }}>
-          <h2 className="text-3xl font-extrabold text-[#0d6efd] uppercase tracking-widest mb-8 border-b-2 border-[#282930] pb-2 inline-block">
+          <h2 className="text-3xl font-extrabold text-[#282930] uppercase tracking-widest mb-8 border-b-2 border-[#42C5FF] pb-2 inline-block">
             {category.category}
           </h2>
           
@@ -87,10 +87,10 @@ const FAQSidebar: React.FC = () => {
                     onClick={() => toggleAccordion(catIndex, itemIndex)}
                     className="w-full text-left py-6 px-4 flex justify-between items-center hover:bg-gray-50 transition-colors focus:outline-none"
                   >
-                    <span className={`font-bold text-lg md:text-xl pr-8 transition-colors ${isOpen ? 'text-[#0d6efd]' : 'text-[#282930]'}`}>
+                    <span className={`font-bold text-lg md:text-xl pr-8 transition-colors ${isOpen ? 'text-[#42C5FF]' : 'text-[#282930]'}`}>
                       {item.q}
                     </span>
-                    <div className={`transform transition-transform duration-300 flex-shrink-0 text-[#282930] ${isOpen ? 'rotate-90 text-[#0d6efd]' : ''}`}>
+                    <div className={`transform transition-transform duration-300 flex-shrink-0 text-[#282930] ${isOpen ? 'rotate-90 text-[#42C5FF]' : ''}`}>
                       {isOpen ? <CloseIcon fontSize="large" /> : <AddIcon fontSize="large" />}
                     </div>
                   </button>

@@ -18,7 +18,7 @@ const App: React.FC = () => {
         <ContactCTA />
       </main>
       
-      <footer className="footer py-20 px-10 bg-[#1a1e21] text-white">
+      <footer className="footer py-20 px-10 bg-[#282930] text-white">
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             <h3 className="font-bold text-xl mb-4 text-[#42c5ff]">FAE Technology S.p.a.</h3>
@@ -29,21 +29,21 @@ const App: React.FC = () => {
           </div> 
           <div>
             <h3 className="font-bold text-xl mb-4 text-white">Explore</h3>
-            <a href="https://fae.technology/success-stories" className="link link-hover block mb-3 text-gray-400 hover:text-white">Success stories</a>
-            <a href="https://fae.technology/leadership-and-governance" className="link link-hover block mb-3 text-gray-400 hover:text-white">Leadership & Governance</a>
-            <a href="https://fae.technology/investor-relations" className="link link-hover block mb-3 text-gray-400 hover:text-white">Investor relations</a>
-            <a href="https://fae.technology/news" className="link link-hover block mb-3 text-gray-400 hover:text-white">News</a>
-            <a href="https://fae.technology/careers" className="link link-hover block mb-3 text-gray-400 hover:text-white">Careers</a>
-            <a href="https://fae.technology/contact-us" className="link link-hover block text-gray-400 hover:text-white">Contact Us</a>
+            <a href="https://fae.technology/success-stories" className="link link-hover block mb-3 text-gray-400 hover:text-white transition-colors">Success stories</a>
+            <a href="https://fae.technology/leadership-and-governance" className="link link-hover block mb-3 text-gray-400 hover:text-white transition-colors">Leadership & Governance</a>
+            <a href="https://fae.technology/investor-relations" className="link link-hover block mb-3 text-gray-400 hover:text-white transition-colors">Investor relations</a>
+            <a href="https://fae.technology/news" className="link link-hover block mb-3 text-gray-400 hover:text-white transition-colors">News</a>
+            <a href="https://fae.technology/careers" className="link link-hover block mb-3 text-gray-400 hover:text-white transition-colors">Careers</a>
+            <a href="https://fae.technology/contact-us" className="link link-hover block text-gray-400 hover:text-white transition-colors">Contact Us</a>
           </div> 
           <div>
             <h3 className="font-bold text-xl mb-4 text-white">Legal & Social</h3>
-            <a href="https://www.iubenda.com/privacy-policy/29874489" className="link link-hover block mb-3 text-gray-400 hover:text-white">Privacy Policy</a>
-            <a href="https://www.iubenda.com/privacy-policy/29874489/cookie-policy" className="link link-hover block mb-6 text-gray-400 hover:text-white">Cookie Policy</a>
+            <a href="https://www.iubenda.com/privacy-policy/29874489" className="link link-hover block mb-3 text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+            <a href="https://www.iubenda.com/privacy-policy/29874489/cookie-policy" className="link link-hover block mb-6 text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
             <div className="flex gap-6">
-              <a href="https://it.linkedin.com/company/faetechnology" className="link link-hover text-gray-400 hover:text-[#42c5ff] uppercase tracking-widest text-xs font-bold">LinkedIn</a>
-              <a href="https://www.facebook.com/FaeTechnology/" className="link link-hover text-gray-400 hover:text-[#42c5ff] uppercase tracking-widest text-xs font-bold">Facebook</a>
-              <a href="https://www.instagram.com/faetechnology/" className="link link-hover text-gray-400 hover:text-[#42c5ff] uppercase tracking-widest text-xs font-bold">Instagram</a>
+              <a href="https://it.linkedin.com/company/faetechnology" className="link link-hover text-gray-400 hover:text-[#42c5ff] uppercase tracking-widest text-xs font-bold transition-colors">LinkedIn</a>
+              <a href="https://www.facebook.com/FaeTechnology/" className="link link-hover text-gray-400 hover:text-[#42c5ff] uppercase tracking-widest text-xs font-bold transition-colors">Facebook</a>
+              <a href="https://www.instagram.com/faetechnology/" className="link link-hover text-gray-400 hover:text-[#42c5ff] uppercase tracking-widest text-xs font-bold transition-colors">Instagram</a>
             </div>
           </div>
         </div>
