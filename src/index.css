@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply antialiased min-h-screen bg-white text-[#282930];
+    @apply antialiased min-h-screen bg-white text-faeDark;
     font-family: 'Raleway', sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {

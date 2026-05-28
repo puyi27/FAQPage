@@ -5,7 +5,6 @@ import SupportOptions from './components/SupportOptions';
 import FAQSection from './components/FAQSection';
 import ResourceCenter from './components/ResourceCenter';
 import ContactCTA from './components/ContactCTA';
-import ChatbotWidget from './components/ChatbotWidget';
 
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -21,14 +20,14 @@ const App: React.FC = () => {
         {!searchTerm && <ContactCTA />}
       </main>
       
-      <footer className="footer py-20 px-10 bg-[#282930] text-white">
+      <footer className="footer py-20 px-10 bg-faeDark text-white">
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <h3 className="font-bold text-xl mb-4 text-[#42c5ff]">FAE Technology S.p.a.</h3>
+            <h3 className="font-bold text-xl mb-4 text-faeCyan">FAE Technology S.p.a.</h3>
             <p className="text-gray-400">Via C. Battisti, 136</p>
             <p className="text-gray-400">24025 - Gazzaniga (BG) - Italia</p>
             <p className="mt-4 text-gray-400">P.IVA 02032310167</p>
-            <a href="mailto:info@fae.technology" className="link link-hover text-[#42c5ff] mt-2 block">info@fae.technology</a>
+            <a href="mailto:info@fae.technology" className="link link-hover text-faeCyan mt-2 block">info@fae.technology</a>
           </div> 
           <div>
             <h3 className="font-bold text-xl mb-4 text-white">Explore</h3>
@@ -44,15 +43,13 @@ const App: React.FC = () => {
             <a href="https://www.iubenda.com/privacy-policy/29874489" className="link link-hover block mb-3 text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
             <a href="https://www.iubenda.com/privacy-policy/29874489/cookie-policy" className="link link-hover block mb-6 text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
             <div className="flex gap-6">
-              <a href="https://it.linkedin.com/company/faetechnology" className="link link-hover text-gray-400 hover:text-[#42c5ff] uppercase tracking-widest text-xs font-bold transition-colors">LinkedIn</a>
-              <a href="https://www.facebook.com/FaeTechnology/" className="link link-hover text-gray-400 hover:text-[#42c5ff] uppercase tracking-widest text-xs font-bold transition-colors">Facebook</a>
-              <a href="https://www.instagram.com/faetechnology/" className="link link-hover text-gray-400 hover:text-[#42c5ff] uppercase tracking-widest text-xs font-bold transition-colors">Instagram</a>
+              <a href="https://it.linkedin.com/company/faetechnology" className="link link-hover text-gray-400 hover:text-faeCyan uppercase tracking-widest text-xs font-bold transition-colors">LinkedIn</a>
+              <a href="https://www.facebook.com/FaeTechnology/" className="link link-hover text-gray-400 hover:text-faeCyan uppercase tracking-widest text-xs font-bold transition-colors">Facebook</a>
+              <a href="https://www.instagram.com/faetechnology/" className="link link-hover text-gray-400 hover:text-faeCyan uppercase tracking-widest text-xs font-bold transition-colors">Instagram</a>
             </div>
           </div>
         </div>
       </footer>
-
-      <ChatbotWidget />
     </div>
   );
 }
